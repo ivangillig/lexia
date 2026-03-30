@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lexia
 
-## Getting Started
+**Buscador semántico de jurisprudencia argentina potenciado con inteligencia artificial.**
 
-First, run the development server:
+## ¿Qué es?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Lexia permite consultar dictámenes y jurisprudencia del ámbito jurídico argentino usando lenguaje natural. En lugar de recordar carátulas, números de expediente o términos técnicos exactos, alcanza con describir el caso o la situación con las propias palabras.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+El motor encuentra resultados por similitud conceptual, no por coincidencia de palabras clave. Eso significa que una búsqueda como *"responsabilidad del estado por un accidente en la vía pública"* devuelve fallos relevantes aunque ninguno use exactamente esa frase.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Fuentes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Los documentos provienen de fuentes oficiales argentinas:
 
-## Learn More
+- **SAIJ** — Sistema Argentino de Información Jurídica
+- **MPF** — Ministerio Público Fiscal de la Nación
+- **PTN** — Procuración del Tesoro de la Nación
 
-To learn more about Next.js, take a look at the following resources:
+## Cómo funciona
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Cada documento es convertido a un vector numérico (embedding) usando el modelo `text-embedding-3-large` de OpenAI, que captura el significado semántico del texto. Esos vectores se almacenan en PostgreSQL con la extensión pgvector y se indexan con HNSW para búsqueda eficiente por similitud coseno.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Cuando el usuario hace una consulta, se genera el embedding de esa consulta y se compara contra todos los documentos. Solo se devuelven resultados con al menos 70% de similitud semántica.
 
-## Deploy on Vercel
+La interfaz está construida con Next.js 15 y Tailwind CSS v4.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Licencia
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
