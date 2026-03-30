@@ -9,7 +9,12 @@ interface HeaderProps {
   loading?: boolean;
 }
 
-const Header = ({ onSearch, onReset, showSearch = false, loading = false }: HeaderProps) => {
+const Header = ({
+  onSearch,
+  onReset,
+  showSearch = false,
+  loading = false,
+}: HeaderProps) => {
   const [q, setQ] = useState("");
 
   function handleSubmit(e: React.FormEvent) {
@@ -20,15 +25,25 @@ const Header = ({ onSearch, onReset, showSearch = false, loading = false }: Head
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
       <div className="flex h-16 items-center justify-between px-8 lg:px-12">
-        <button onClick={onReset} className="flex items-center gap-2.5 shrink-0 cursor-pointer">
+        <button
+          onClick={onReset}
+          className="flex items-center gap-2.5 shrink-0 cursor-pointer"
+        >
           <div className="h-8 w-8 rounded-xl btn-primary-gradient flex items-center justify-center">
-            <span className="text-xs font-bold text-primary-foreground tracking-tight">Lx</span>
+            <span className="text-xs font-bold text-primary-foreground tracking-tight">
+              Lx
+            </span>
           </div>
-          <span className="text-xl font-bold tracking-tight text-foreground">LexIA</span>
+          <span className="text-xl font-bold tracking-tight text-foreground">
+            LexIA
+          </span>
         </button>
 
         {showSearch ? (
-          <form onSubmit={handleSubmit} className="flex-1 max-w-xl mx-8 flex gap-2">
+          <form
+            onSubmit={handleSubmit}
+            className="flex-1 max-w-xl mx-8 flex gap-2"
+          >
             <input
               value={q}
               onChange={(e) => setQ(e.target.value)}

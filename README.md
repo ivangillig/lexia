@@ -6,7 +6,7 @@
 
 Lexia permite consultar dictámenes y jurisprudencia del ámbito jurídico argentino usando lenguaje natural. En lugar de recordar carátulas, números de expediente o términos técnicos exactos, alcanza con describir el caso o la situación con las propias palabras.
 
-El motor encuentra resultados por similitud conceptual, no por coincidencia de palabras clave. Eso significa que una búsqueda como *"responsabilidad del estado por un accidente en la vía pública"* devuelve fallos relevantes aunque ninguno use exactamente esa frase.
+El motor encuentra resultados por similitud conceptual, no por coincidencia de palabras clave. Eso significa que una búsqueda como _"responsabilidad del estado por un accidente en la vía pública"_ devuelve fallos relevantes aunque ninguno use exactamente esa frase.
 
 ## Fuentes
 

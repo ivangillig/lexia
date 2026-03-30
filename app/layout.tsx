@@ -26,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="h-full antialiased">
-      <body className={`${heading.variable} ${sans.variable} min-h-full`}>{children}</body>
+      <body className={`${heading.variable} ${sans.variable} min-h-full`}>
+        {children}
+      </body>
     </html>
   );
 }
